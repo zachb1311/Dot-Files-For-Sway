@@ -1,0 +1,52 @@
+{
+  "layer": "top",
+    "modules-left": ["custom/arch", "sway/workspaces"],
+    "modules-center": ["clock"],
+    "modules-right": ["pulseaudio", "bluetooth", "network", "battery", "sway/cpu", "sway/temp"],
+    "custom/arch": {
+      "format": "   ZBNZ ",
+      "tooltip": false,
+      "on-click": "exec swaymsg exit"
+    },
+    "sway/workspaces": {
+      "format": "{name}",
+      "tooltip": false,
+      "all-outputs": true
+    },
+    "clock": {
+      "format": "<span color='#cba6f7'>  </span>{:%H : %M}",
+    },
+    "pulseaudio": {
+      "format": "<span color='#cba6f7'>{icon}</span> {volume}%",
+      "format-muted": "",
+      "tooltip": false,
+      "format-icons": {
+        "headphone": "",
+        "default": ["", "", "󰕾", "󰕾", "󰕾", "", "", ""]
+      },
+      "scroll-step": 1,
+	  "on-click": "pavucontrol"
+    },
+    "bluetooth": {
+      "format": "<span color='#cba6f7'></span> {status}",
+      "format-disabled": "", // an empty format will hide the module
+      "format-connected": "<span color='#cba6f7'></span> {num_connections}",
+      "tooltip-format": "{device_enumerate}",
+      "tooltip-format-enumerate-connected": "{device_alias}   {device_address}"
+    },
+    "network": {
+      "format": "{ifname}",
+      "format-wifi": "<span color='#cba6f7'>  </span>{essid} ",
+      "format-ethernet": "{ipaddr} 󰈀 ",
+      "format-disconnected": "<span color='#cba6f7'>󰖪  </span>No Network ",
+      "tooltip": false,
+      "on-click": "nm-connection-editor"
+    },
+
+    "battery": {
+      "format": "<span color='#cba6f7'>{icon}</span> {capacity}%",
+      "format-icons": ["", "", "", "", "", "", "", "", "", ""],
+      "format-charging": "<span color='#cba6f7'></span> {capacity}%",
+      "tooltip": false,
+    },
+}
